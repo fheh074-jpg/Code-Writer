@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Writer (LM Studio)</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Code Writer</h1>
+        <p>
+          Enter a prompt, pick a language, set a time limit, and let LM Studio iterate on
+          code, tests, and improvements.
+        </p>
+      </header>
+
+      <section class="card">
+        <form id="prompt-form">
+          <label>
+            Prompt
+            <textarea id="prompt" rows="6" placeholder="Describe the app or feature you want."></textarea>
+          </label>
+
+          <div class="grid">
+            <label>
+              Language
+              <input id="language" type="text" placeholder="TypeScript, Python, Rust, etc." />
+            </label>
+
+            <label>
+              Time limit (minutes)
+              <input id="time-limit" type="number" min="1" value="5" />
+            </label>
+          </div>
+
+          <div class="grid">
+            <label>
+              LM Studio Base URL
+              <input id="base-url" type="text" value="http://localhost:1234/v1" />
+            </label>
+
+            <label>
+              Model
+              <input id="model" type="text" value="deepseek-coder-v2-instruct" />
+            </label>
+          </div>
+
+          <label>
+            API Key (optional)
+            <input id="api-key" type="password" placeholder="If your LM Studio server requires it" />
+          </label>
+
+          <button type="submit" id="submit">Generate Iterations</button>
+        </form>
+      </section>
+
+      <section class="card" id="results">
+        <div class="results-header">
+          <h2>Iterations</h2>
+          <span id="status">Idle</span>
+        </div>
+        <div id="iterations"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
